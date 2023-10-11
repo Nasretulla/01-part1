@@ -1,21 +1,44 @@
 import { useState } from 'react'
 
+
+const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+  )
+}
+
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  )
+}
+
 const App = (props) => {
   const [ counter, setCounter ] = useState(0)
   
-const increaseByone = () => setCounter(counter +1)
+const increaseByOne = () => setCounter(counter +1)
+const decreaseByOne = () => setCounter(counter - 1)
 const setToZero = () => setCounter(0)
   
   
   return (
     <div>
-    <div>{counter}</div>
+    <Display counter={counter} />
 
-    <button onClick={increaseByone}>
-  plus
-</button>
-
-<button onClick={setToZero}>zero</button>
+    <Button
+        handleClick={increaseByOne}
+        text='plus'
+      />
+      <Button
+        handleClick={setToZero}
+        text='zero'
+      />     
+      <Button
+        handleClick={decreaseByOne}
+        text='minus'
+      />           
 
     </div>
   )
